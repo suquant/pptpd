@@ -41,6 +41,6 @@ sed -i -r "s/acctserver \tlocalhost/acctserver \t$RADIUS_SERVER/g" /etc/radiuscl
 #iptables -A INPUT -p tcp --dport 1723 -j ACCEPT
 #iptables -A INPUT -p 47 -j ACCEPT
 
-syslogd -n -O /dev/stdout
+syslogd -n -O /dev/stdout &
 
 exec /usr/sbin/pppd --fg $@

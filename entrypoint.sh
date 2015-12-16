@@ -43,4 +43,4 @@ sed -i -r "s/acctserver \tlocalhost/acctserver \t$RADIUS_SERVER/g" /etc/radiuscl
 
 syslogd -n -O /dev/stdout &
 
-exec /usr/sbin/pppd --fg $@
+exec /usr/sbin/pptpd --fg $@

@@ -43,8 +43,11 @@ echo "$RADIUS_SERVER    $RADIUS_SECRET" >> etc/radiusclient/servers
 sed -i -r "s/authserver \tlocalhost/authserver \t$RADIUS_SERVER/g" /etc/radiusclient/radiusclient.conf
 sed -i -r "s/acctserver \tlocalhost/acctserver \t$RADIUS_SERVER/g" /etc/radiusclient/radiusclient.conf
 
+echo "$DNS_SERVER" > /etc/resolv.conf
+
 #iptables -A INPUT -p tcp --dport 1723 -j ACCEPT
 #iptables -A INPUT -p 47 -j ACCEPT
+
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 syslogd -n -O /dev/stdout &

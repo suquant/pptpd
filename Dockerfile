@@ -2,7 +2,7 @@ FROM alpine:edge
 
 # install common packages
 RUN apk update && \
-	apk add iptables pptpd ppp ppp-radius freeradius-radclient freeradius-client
+	apk add iptables pptpd ppp ppp-radius
 
 COPY entrypoint.sh /usr/bin/entrypoint.sh
 COPY pptpd.conf /etc/pptpd.conf

@@ -18,21 +18,26 @@ if [ ! -d /var/lib/pptpd ]; then
     mkdir -p /var/lib/pptpd
 fi
 
-echo "name pptpd
+echo "
+name pptpd
+debug
 refuse-pap
 refuse-chap
 refuse-mschap
 require-mschap-v2
 require-mppe-128
-
-plugin radius.so
-plugin radattr.so
-
+proxyarp
+nodefaultroute
+lock
+nobsdcomp
+novj
+novjccomp
+nologfd
 ms-dns 8.8.8.8
 ms-dns 8.8.4.4
+plugin radius.so
+plugin radattr.so" > /etc/ppp/options
 
-proxyarp
-debug" > /etc/ppp/options
 
 echo "$RADIUS_SERVER    $RADIUS_SECRET" >> etc/radiusclient/servers
 sed -i -r "s/authserver \tlocalhost/authserver \t$RADIUS_SERVER/g" /etc/radiusclient/radiusclient.conf
@@ -40,7 +45,8 @@ sed -i -r "s/acctserver \tlocalhost/acctserver \t$RADIUS_SERVER/g" /etc/radiuscl
 
 #iptables -A INPUT -p tcp --dport 1723 -j ACCEPT
 #iptables -A INPUT -p 47 -j ACCEPT
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 syslogd -n -O /dev/stdout &
 
-exec /usr/sbin/pptpd --fg $@
+exec /usr/sbin/pptpd -f $@

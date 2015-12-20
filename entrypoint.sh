@@ -22,10 +22,11 @@ echo "
 name pptpd
 debug
 
-#refuse-pap
-#refuse-chap
-#refuse-mschap
-#require-mschap-v2
+auth
+require-pap
+refuse-chap
+refuse-mschap
+refuse-mschap-v2
 require-mppe-128
 
 proxyarp
@@ -38,7 +39,9 @@ nologfd
 ms-dns 8.8.8.8
 ms-dns 8.8.4.4
 plugin radius.so
-plugin radattr.so" > /etc/ppp/options
+plugin radattr.so
+mtu 1410
+mru 1410" > /etc/ppp/options
 
 
 echo "$RADIUS_SERVER    $RADIUS_SECRET" >> etc/radiusclient/servers

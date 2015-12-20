@@ -22,10 +22,10 @@ echo "
 name pptpd
 debug
 
-refuse-pap
-refuse-chap
-refuse-mschap
-require-mschap-v2
+#refuse-pap
+#refuse-chap
+#refuse-mschap
+#require-mschap-v2
 require-mppe-128
 
 proxyarp

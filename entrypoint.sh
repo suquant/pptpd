@@ -22,7 +22,7 @@ echo "
 name pptpd
 debug
 
-require-pap
+refuse-pap
 refuse-chap
 refuse-mschap
 require-mschap-v2

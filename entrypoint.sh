@@ -23,11 +23,11 @@ name pptpd
 debug
 
 auth
-require-pap
+refuse-pap
 refuse-chap
 refuse-mschap
-refuse-mschap-v2
-#require-mppe-128
+require-mschap-v2
+require-mppe-128
 
 proxyarp
 nodefaultroute

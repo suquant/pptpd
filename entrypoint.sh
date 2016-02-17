@@ -20,7 +20,6 @@ fi
 
 echo "
 name pptpd
-debug
 
 auth
 refuse-pap
@@ -41,7 +40,8 @@ ms-dns 8.8.4.4
 plugin radius.so
 plugin radattr.so
 mtu 1410
-mru 1410" > /etc/ppp/options
+mru 1410
+passive" > /etc/ppp/options
 
 
 echo "$RADIUS_SERVER    $RADIUS_SECRET" >> etc/radiusclient/servers

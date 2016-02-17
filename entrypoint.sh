@@ -44,7 +44,7 @@ mru 1410
 passive" > /etc/ppp/options
 
 
-echo "$RADIUS_SERVER    $RADIUS_SECRET" >> etc/radiusclient/servers
+echo "$RADIUS_SERVER    $RADIUS_SECRET" >> /etc/radiusclient/servers
 sed -i -r "s/authserver \tlocalhost/authserver \t$RADIUS_SERVER/g" /etc/radiusclient/radiusclient.conf
 sed -i -r "s/acctserver \tlocalhost/acctserver \t$RADIUS_SERVER/g" /etc/radiusclient/radiusclient.conf
 

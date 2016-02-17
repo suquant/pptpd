@@ -1,7 +1,7 @@
 FROM alpine:edge
+MAINTAINER George Kutsurua <g.kutsurua@gmail.com>
 
-# install common packages
-RUN apk update && \
+RUN apk update && apk upgrade \
 	apk add iptables pptpd ppp ppp-radius
 
 COPY entrypoint.sh /usr/bin/entrypoint.sh
